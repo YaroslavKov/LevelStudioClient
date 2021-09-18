@@ -1,0 +1,23 @@
+@import "consts";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+}
+
+@media screen and (max-width: $max-form-responsive-width) {
+  :host {
+    width: 100%;
+  }
+}
+
+mat-dialog-content {
+  width: 100%;
+}
+
+mat-dialog-content mat-form-field {
+  width: 100%;
+}
+

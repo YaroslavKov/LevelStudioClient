@@ -1,4 +1,4 @@
 export interface LogInFormData {
-  login: string;
-  password: string;
+    login: string;
+    password: string;
 }

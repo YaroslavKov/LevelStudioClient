@@ -4,23 +4,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { HttpClientModule } from '@angular/common/http';
-
-const angularModules = [
-  BrowserModule,
-  BrowserAnimationsModule,
-  ReactiveFormsModule,
-  FlexLayoutModule,
-  HttpClientModule
-]
-
+import {HttpClientModule} from '@angular/common/http';
 //External libraries
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-
-const externalLibrariesModules = [
-  FontAwesomeModule
-]
-
 //Angular Material Components
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
@@ -52,41 +38,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
-const materialModules = [
-  MatToolbarModule,
-  MatCheckboxModule,
-  MatButtonModule,
-  MatInputModule,
-  MatAutocompleteModule,
-  MatDatepickerModule,
-  MatFormFieldModule,
-  MatRadioModule,
-  MatSelectModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatMenuModule,
-  MatSidenavModule,
-  MatToolbarModule,
-  MatListModule,
-  MatGridListModule,
-  MatCardModule,
-  MatStepperModule,
-  MatTabsModule,
-  MatExpansionModule,
-  MatButtonToggleModule,
-  MatChipsModule,
-  MatIconModule,
-  MatProgressSpinnerModule,
-  MatProgressBarModule,
-  MatDialogModule,
-  MatTooltipModule,
-  MatSnackBarModule,
-  MatTableModule,
-  MatSortModule,
-  MatPaginatorModule
-];
-
 //Project components
 import {StartPageComponent} from './start-page/start-page.component';
 import {LogInFormComponent} from './log-in-form/log-in-form.component';
@@ -98,39 +49,85 @@ import {AppRoutingModule} from './app-routing.module';
 import {UserService} from './services/user-service'
 import {LoggingService} from './services/logging-service'
 import {MessageService} from './services/message-service'
-import {MessageSender, MessageReceiver} from './interfaces/Message';
-import { ErrorDialogComponent } from './error-dialog/error-dialog.component'
+import {MessageReceiver, MessageSender} from './interfaces/Message';
+import {ErrorDialogComponent} from './error-dialog/error-dialog.component'
 import {HttpClient} from "./services/Clients/HttpClient";
 
+const angularModules = [
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    HttpClientModule
+]
+
+const externalLibrariesModules = [
+    FontAwesomeModule
+]
+
+const materialModules = [
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatChipsModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
+];
+
 const services = [
-  UserService,
-  LoggingService,
-  MessageService,
-  MessageSender,
-  MessageReceiver,
-  HttpClient
+    UserService,
+    LoggingService,
+    MessageService,
+    MessageSender,
+    MessageReceiver,
+    HttpClient
 ];
 
 @NgModule({
-  declarations: [
-    MenuComponent,
-    StartPageComponent,
-    LogInFormComponent,
-    SignUpFormComponent,
-    ErrorDialogComponent
-  ],
-  imports: [
-    ...angularModules,
-    ...externalLibrariesModules,
-    ...materialModules,
-    AppRoutingModule
-  ],
-  providers: [
-    services
-  ],
-  bootstrap: [
-    MenuComponent
-  ]
+    declarations: [
+        MenuComponent,
+        StartPageComponent,
+        LogInFormComponent,
+        SignUpFormComponent,
+        ErrorDialogComponent
+    ],
+    imports: [
+        ...angularModules,
+        ...externalLibrariesModules,
+        ...materialModules,
+        AppRoutingModule
+    ],
+    providers: [
+        services
+    ],
+    bootstrap: [
+        MenuComponent
+    ]
 })
 export class AppModule {
 }

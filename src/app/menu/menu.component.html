@@ -1,46 +1,50 @@
 <mat-drawer-container [hasBackdrop]="true">
-  <mat-drawer #drawer [mode]="'over'" position="end">
-    <div id="side-navigation">
-      <button color="accent" mat-raised-button (click)="openLoginForm()" *ngIf="!localStorage.token">
-        Log in
-        <mat-icon>login</mat-icon>
-      </button>
-      <button color="accent" mat-raised-button (click)="openRegistrationForm()" *ngIf="!localStorage.token">
-        Sign up
-        <mat-icon>app_registration</mat-icon>
-      </button>
-      <button color="accent" mat-raised-button (click)="openLogoutForm()" *ngIf="localStorage.token">
-        Log out
-        <mat-icon>logout</mat-icon>
-      </button>
-    </div>
-  </mat-drawer>
-
-  <mat-drawer-content>
-    <mat-toolbar id="header" color="primary">
-      <span class="unselectable">LevelStudio</span>
-      <div [style.width.%]="40"></div>
-      <div [style.width.em]="12" style="display: flex; justify-content: space-between;">
-        <button color="accent" mat-raised-button (click)="openLoginForm()" fxHide.xs *ngIf="!localStorage.token">
-          Log in
-          <mat-icon>login</mat-icon>
-        </button>
-        <button color="accent" mat-raised-button (click)="openRegistrationForm()" fxHide.xs *ngIf="!localStorage.token">
-          Sign up
-          <mat-icon>app_registration</mat-icon>
-        </button>
-        <button color="accent" mat-raised-button (click)="openLogoutForm()" fxHide.xs *ngIf="localStorage.token">
-          Log out
-          <mat-icon>logout</mat-icon>
-        </button>
-      </div>
-      <button color="primary" id="side-menu-button" mat-raised-button (click)="sideNav?.toggle()" fxHide fxShow.xs>
-        <mat-icon id="side-menu-button-icon">menu</mat-icon>
-      </button>
-    </mat-toolbar>
-    <app-start-page></app-start-page>
-    <mat-toolbar id="footer" color="primary">
-      <span class="unselectable">Alkashi Inc.® All rights reserved</span>
-    </mat-toolbar>
-  </mat-drawer-content>
+    <mat-drawer #drawer [mode]="'over'" position="end">
+        <div id="side-navigation">
+            <button (click)="openLoginForm()" *ngIf="!localStorage.token" color="accent" mat-raised-button>
+                Log in
+                <mat-icon>login</mat-icon>
+            </button>
+            <button (click)="openRegistrationForm()" *ngIf="!localStorage.token" color="accent" mat-raised-button>
+                Sign up
+                <mat-icon>app_registration</mat-icon>
+            </button>
+            <button (click)="openLogoutForm()" *ngIf="localStorage.token" color="accent" mat-raised-button>
+                Log out
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+    </mat-drawer>
+    
+    <mat-drawer-content>
+        <mat-toolbar color="primary" id="header">
+            <span class="unselectable">LevelStudio</span>
+            <div [style.width.%]="40"></div>
+            <div [style.width.em]="12" style="display: flex; justify-content: space-between;">
+                <button (click)="openLoginForm()" *ngIf="!localStorage.token" color="accent" fxHide.xs
+                        mat-raised-button>
+                    Log in
+                    <mat-icon>login</mat-icon>
+                </button>
+                <button (click)="openRegistrationForm()" *ngIf="!localStorage.token" color="accent" fxHide.xs
+                        mat-raised-button>
+                    Sign up
+                    <mat-icon>app_registration</mat-icon>
+                </button>
+                <button (click)="openLogoutForm()" *ngIf="localStorage.token" color="accent" fxHide.xs
+                        mat-raised-button>
+                    Log out
+                    <mat-icon>logout</mat-icon>
+                </button>
+            </div>
+            <button (click)="sideNav?.toggle()" color="primary" fxHide fxShow.xs id="side-menu-button"
+                    mat-raised-button>
+                <mat-icon id="side-menu-button-icon">menu</mat-icon>
+            </button>
+        </mat-toolbar>
+        <app-start-page></app-start-page>
+        <mat-toolbar color="primary" id="footer">
+            <span class="unselectable">Alkashi Inc.® All rights reserved</span>
+        </mat-toolbar>
+    </mat-drawer-content>
 </mat-drawer-container>

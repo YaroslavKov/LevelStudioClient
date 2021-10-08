@@ -1,14 +1,17 @@
+@import "../styles/consts";
+
 #header {
   justify-content: space-around;
   height: 50px;
 }
 
 #footer {
-  font-size: 16px;
-  position: absolute;
   justify-content: center;
-  bottom: 0;
   height: 50px;
+}
+#footer span{
+  color: $matToolbarTextColor;
+  font-size: 16px;
 }
 
 mat-drawer {
@@ -39,4 +42,9 @@ mat-drawer-container {
 #side-navigation > button {
   margin-top: 20px;
   width: 90%;
+}
+
+#headerText {
+  color: $matToolbarTextColor;
+  text-decoration: none;
 }

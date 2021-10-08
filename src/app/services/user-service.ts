@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpHeaders} from '@angular/common/http';
 import {environment} from "../../environments/environment";
 import {GetTokenRequest, RefreshTokenRequest} from "../interfaces/ServiceModels/TokenModels";
-import {HttpClient} from "./Clients/HttpClient";
+import {HttpClient} from "./Clients/HttpClient";//"@angular/common/http"
 import {RegistrationModel} from "../interfaces/ServiceModels/AccountModels";
 
 @Injectable()

@@ -1,7 +1,7 @@
 <h1 class="unselectable" mat-dialog-title>Log in</h1>
-<mat-dialog-content>
+<mat-dialog-content *ngIf="!isConfirmation">
     <p>
-        <mat-form-field color="accent">
+        <mat-form-field color="accent" (keyup.enter)="onConfirm()">
             <mat-label>Login</mat-label>
             <input [formControl]="emailControl" matInput placeholder="email@example.com" type="email">
             <mat-error *ngIf="emailControl.errors?.email && !emailControl.errors?.required">
@@ -13,7 +13,7 @@
         </mat-form-field>
     </p>
     <p>
-        <mat-form-field color="accent">
+        <mat-form-field color="accent" (keyup.enter)="onConfirm()">
             <mat-label>Password</mat-label>
             <input #password [formControl]="passwordControl" matInput placeholder="*****" type="password">
             <mat-error *ngIf="passwordControl.errors?.required">
@@ -22,7 +22,15 @@
         </mat-form-field>
     </p>
 </mat-dialog-content>
-<div mat-dialog-actions>
+<div mat-dialog-actions *ngIf="!isConfirmation">
     <button (click)="onClose()" mat-button>Close</button>
     <button (click)="onConfirm()" cdkFocusInitial mat-button>Ok</button>
 </div>
+<mat-card *ngIf="isConfirmation" [style.backgroundColor]="'darkslategrey'" class="mat-elevation-z0">
+    <mat-card-content>
+        <mat-progress-spinner
+                color="primary"
+                mode="indeterminate">
+        </mat-progress-spinner>
+    </mat-card-content>
+</mat-card>

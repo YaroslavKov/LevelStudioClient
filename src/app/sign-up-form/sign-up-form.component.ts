@@ -1,6 +1,7 @@
 import {Component, EventEmitter, ViewChild} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {AbstractControl, FormControl, Validators} from '@angular/forms';
+import {SignUpFormData} from "../interfaces/SignUpFormData";
 
 @Component({
     selector: 'app-sign-up-form',
@@ -11,6 +12,7 @@ export class SignUpFormComponent {
     @ViewChild('password') password: any;
     submitEmitter = new EventEmitter();
     lastName: string | undefined;
+    isConfirmation: boolean = false;
 
     //region Controls
     emailControl = new FormControl("", [
@@ -43,6 +45,10 @@ export class SignUpFormComponent {
         public dialogRef: MatDialogRef<SignUpFormComponent>) {
     }
 
+    public disableSpinner() {
+        this.isConfirmation = false;
+    }
+
     onClose() {
         this.dialogRef.close();
     }
@@ -54,13 +60,14 @@ export class SignUpFormComponent {
     onConfirm() {
         this.formControls.forEach(control => control.markAsTouched())
         if (!this.formControls.some(control => control.invalid)) {
-            this.submitEmitter.emit({
+            const emitData: SignUpFormData = {
                 email: this.emailControl.value,
                 password: this.passwordControl.value,
                 firstName: this.firstNameControl.value,
                 lastName: this.lastName
-            });
-            this.dialogRef.close();
+            };
+            this.submitEmitter.emit(emitData);
+            this.isConfirmation = true;
         }
     }
 }

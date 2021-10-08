@@ -9,6 +9,7 @@ import {FormControl, Validators} from "@angular/forms";
 })
 export class LogInFormComponent {
     submitEmitter = new EventEmitter();
+    isConfirmation: boolean = false;
 
     //region Controls
     emailControl = new FormControl("", [
@@ -30,6 +31,10 @@ export class LogInFormComponent {
         public dialogRef: MatDialogRef<LogInFormComponent>) {
     }
 
+    public disableSpinner() {
+        this.isConfirmation = false;
+    }
+
     onClose() {
         this.dialogRef.close();
     }
@@ -41,7 +46,7 @@ export class LogInFormComponent {
                 login: this.emailControl.value,
                 password: this.passwordControl.value
             });
-            this.dialogRef.close();
+            this.isConfirmation = true;
         }
     }
 }

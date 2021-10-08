@@ -31,13 +31,13 @@ export class LoggingService implements IMessageSender {
             this._userService.loginRequest(model)
                 .then(data => {
                     // @ts-ignore
-                    this.updateData(data.access, data.refresh);
+                    this.updateData(data?.access, data?.refresh);
                     resolve(true);
                 })
                 .catch(err => {
-                    this.errors = err.error;
+                    this.errors = err?.error;
                     this.logOut();
-                    resolve(false);
+                    reject(false);
                 });
         });
     }
@@ -53,12 +53,12 @@ export class LoggingService implements IMessageSender {
             this._userService.signUpRequest(model)
                 .then(data => {
                     // @ts-ignore
-                    this.logIn({login: formData.email, password: formData.password});
+                    this.logIn({login: formData?.email, password: formData?.password});
                     resolve(true);
                 })
                 .catch(err => {
-                    this.errors = err.error;
-                    resolve(false);
+                    this.errors = err?.error;
+                    reject(false);
                 });
         });
     }
@@ -83,11 +83,11 @@ export class LoggingService implements IMessageSender {
             this._userService.refreshTokenRequest(model)
                 // @ts-ignore
                 .then((data: GetTokenResponse) => {
-                    this.updateData(data.access);
+                    this.updateData(data?.access);
                     resolve(true);
                 })
                 .catch(resp => {
-                    this.errors = resp.error;
+                    this.errors = resp?.error;
                     this.logOut();
                     resolve(false);
                 });

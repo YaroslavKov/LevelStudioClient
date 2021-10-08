@@ -1,0 +1,6 @@
+<button mat-stroked-button color="primary">Primary</button>
+<button mat-stroked-button color="accent" (click)="startSound($event)">Accent</button>
+<button mat-stroked-button color="warn" (click)="stopSound()">Warn</button>
+<button mat-stroked-button disabled>Disabled</button>
+<input type="range" min="0" max="1" step="0.01" value=".5" #volume (input)="changeVolume(volume.value)">
+<a mat-stroked-button href="https://www.google.com/" target="_blank">Link</a>

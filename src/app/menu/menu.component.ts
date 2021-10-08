@@ -40,7 +40,16 @@ export class MenuComponent implements AfterViewChecked, IMessageReceiver {
         });
 
         const onClosed = dialogRef.componentInstance.submitEmitter.subscribe(async (data: LogInFormData) => {
-            this._loggingServiceModule.logIn(data);
+            //const result = await this._loggingServiceModule.logIn(data);
+            this._loggingServiceModule.logIn(data)
+                .then(result => {
+                    if (result) {
+                        dialogRef.close();
+                    }
+                })
+                .catch(() => {
+                    dialogRef.componentInstance.disableSpinner();
+                });
         });
         dialogRef.afterClosed().subscribe(() => {
             onClosed.unsubscribe();
@@ -53,7 +62,15 @@ export class MenuComponent implements AfterViewChecked, IMessageReceiver {
         });
 
         const onClosed = dialogRef.componentInstance.submitEmitter.subscribe(async (data: SignUpFormData) => {
-            this._loggingServiceModule.signUp(data);
+            this._loggingServiceModule.signUp(data)
+                .then(result => {
+                    if (result) {
+                        dialogRef.close();
+                    }
+                })
+                .catch(() => {
+                    dialogRef.componentInstance.disableSpinner();
+                });
         });
         dialogRef.afterClosed().subscribe(() => {
             onClosed.unsubscribe();
@@ -76,5 +93,9 @@ export class MenuComponent implements AfterViewChecked, IMessageReceiver {
 
     tokenMessageHandler(value: any) {
         console.log(value);
+    }
+
+    createNewProject() {
+
     }
 }

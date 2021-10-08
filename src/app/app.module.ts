@@ -7,6 +7,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
 //External libraries
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {AudioContextModule} from 'angular-audio-context';
 //Angular Material Components
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
@@ -52,6 +53,8 @@ import {MessageService} from './services/message-service'
 import {MessageReceiver, MessageSender} from './interfaces/Message';
 import {ErrorDialogComponent} from './error-dialog/error-dialog.component'
 import {HttpClient} from "./services/Clients/HttpClient";
+import {ProjectPageComponent} from './project-page/project-page.component';
+import {NotFoundPageComponent} from './not-found-page/not-found-page.component';
 
 const angularModules = [
     BrowserModule,
@@ -62,7 +65,8 @@ const angularModules = [
 ]
 
 const externalLibrariesModules = [
-    FontAwesomeModule
+    FontAwesomeModule,
+    AudioContextModule.forRoot('balanced')
 ]
 
 const materialModules = [
@@ -114,7 +118,9 @@ const services = [
         StartPageComponent,
         LogInFormComponent,
         SignUpFormComponent,
-        ErrorDialogComponent
+        ErrorDialogComponent,
+        ProjectPageComponent,
+        NotFoundPageComponent
     ],
     imports: [
         ...angularModules,

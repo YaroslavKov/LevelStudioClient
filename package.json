@@ -1,12 +1,14 @@
 {
-  "name": "LevelStudio",
+  "name": "client",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
+    "startOnLocalhost": "ng serve --open --host 0.0.0.0 -c local",
     "silentStart": "ng serve",
     "silentProxyStart": "ng serve --proxy-config src/proxy.conf.json",
     "build": "ng build",
+    "buildLocal": "ng build -c local",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -26,6 +28,7 @@
     "@fortawesome/angular-fontawesome": "^0.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "angular-audio-context": "^31.0.12",
     "axios": "^0.21.1",
     "rxjs": "^6.6.7",
     "scss": "^0.2.4",

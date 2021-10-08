@@ -34,7 +34,7 @@ export class HttpClient extends BaseHttpClient {
     openErrorDialog(response: HttpErrorResponse) {
         this.dialog.open(ErrorDialogComponent, {
             data: {
-                message: response.error.detail
+                message: JSON.stringify(response)// response.error.detail || `${response.status} - ${response.statusText}`
             }
         });
     }

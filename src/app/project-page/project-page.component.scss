@@ -1,0 +1,11 @@
+@import "../styles/consts";
+
+* {
+  text-align: center;
+  color: $mainText;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+}

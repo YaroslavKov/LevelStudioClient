@@ -1,7 +1,7 @@
 <h1 class="unselectable" mat-dialog-title>Sign up</h1>
-<mat-dialog-content #validationForm>
+<mat-dialog-content #validationForm *ngIf="!isConfirmation">
     <p>
-        <mat-form-field color="accent">
+        <mat-form-field color="accent" (keyup.enter)="onConfirm()">
             <mat-label>Email</mat-label>
             <input [formControl]="emailControl" matInput placeholder="email@example.com" type="email">
             <mat-error *ngIf="emailControl.errors?.email && !emailControl.errors?.required">
@@ -13,7 +13,7 @@
         </mat-form-field>
     </p>
     <p>
-        <mat-form-field color="accent">
+        <mat-form-field color="accent" (keyup.enter)="onConfirm()">
             <mat-label>Password</mat-label>
             <input #password [formControl]="passwordControl" matInput placeholder="*****" type="password">
             <mat-error *ngIf="passwordControl.errors?.required">
@@ -25,7 +25,7 @@
         </mat-form-field>
     </p>
     <p>
-        <mat-form-field color="accent">
+        <mat-form-field color="accent" (keyup.enter)="onConfirm()">
             <mat-label>Password confirm</mat-label>
             <input [formControl]="passwordConfirmControl" matInput placeholder="*****" type="password">
             <mat-error *ngIf="passwordConfirmControl.errors?.required">
@@ -38,7 +38,7 @@
         </mat-form-field>
     </p>
     <p>
-        <mat-form-field color="accent">
+        <mat-form-field color="accent" (keyup.enter)="onConfirm()">
             <mat-label>First name</mat-label>
             <input [formControl]="firstNameControl" matInput type="text">
             <mat-error *ngIf="firstNameControl.errors?.required">
@@ -47,13 +47,21 @@
         </mat-form-field>
     </p>
     <p>
-        <mat-form-field color="accent">
+        <mat-form-field color="accent" (keyup.enter)="onConfirm()">
             <mat-label>Last name</mat-label>
             <input (change)="onSecondNameChanged($event)" matInput type="text">
         </mat-form-field>
     </p>
 </mat-dialog-content>
-<div mat-dialog-actions>
+<div mat-dialog-actions *ngIf="!isConfirmation">
     <button (click)="onClose()" mat-button>Close</button>
     <button (click)="onConfirm()" cdkFocusInitial mat-button>Ok</button>
 </div>
+<mat-card *ngIf="isConfirmation" [style.backgroundColor]="'darkslategrey'" class="mat-elevation-z0">
+    <mat-card-content>
+        <mat-progress-spinner
+                color="primary"
+                mode="indeterminate">
+        </mat-progress-spinner>
+    </mat-card-content>
+</mat-card>

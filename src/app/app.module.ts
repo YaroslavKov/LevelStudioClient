@@ -5,40 +5,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 //External libraries
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {AudioContextModule} from 'angular-audio-context';
-//Angular Material Components
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatListModule} from '@angular/material/list';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatCardModule} from '@angular/material/card';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatIconModule} from '@angular/material/icon';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
-import {MatPaginatorModule} from '@angular/material/paginator';
+
 //Project components
 import {StartPageComponent} from './start-page/start-page.component';
 import {LogInFormComponent} from './log-in-form/log-in-form.component';
@@ -51,17 +23,22 @@ import {UserService} from './services/user-service'
 import {LoggingService} from './services/logging-service'
 import {MessageService} from './services/message-service'
 import {MessageReceiver, MessageSender} from './interfaces/Message';
+
+//Components
 import {ErrorDialogComponent} from './error-dialog/error-dialog.component'
 import {HttpClient} from "./services/Clients/HttpClient";
 import {ProjectPageComponent} from './project-page/project-page.component';
 import {NotFoundPageComponent} from './not-found-page/not-found-page.component';
+
+import {MaterialComponentsModule} from './material-components-module'
 
 const angularModules = [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
 ]
 
 const externalLibrariesModules = [
@@ -69,39 +46,6 @@ const externalLibrariesModules = [
     AudioContextModule.forRoot('balanced')
 ]
 
-const materialModules = [
-    MatToolbarModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatStepperModule,
-    MatTabsModule,
-    MatExpansionModule,
-    MatButtonToggleModule,
-    MatChipsModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    MatProgressBarModule,
-    MatDialogModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule
-];
 
 const services = [
     UserService,
@@ -125,7 +69,7 @@ const services = [
     imports: [
         ...angularModules,
         ...externalLibrariesModules,
-        ...materialModules,
+        MaterialComponentsModule,
         AppRoutingModule
     ],
     providers: [

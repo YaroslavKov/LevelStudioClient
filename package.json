@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "startOnLocalhost": "ng serve --open --host 0.0.0.0 -c local",
+    "startOnLocalhost": "ng serve --host 0.0.0.0 -c local",
     "silentStart": "ng serve",
     "silentProxyStart": "ng serve --proxy-config src/proxy.conf.json",
     "build": "ng build",
